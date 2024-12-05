@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add global styles here if needed */
+/* Ensure no conflicting body styles */
+body {
+  margin: 0;
+  padding: 0;
+}

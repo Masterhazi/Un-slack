@@ -1,0 +1,134 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('images/background.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+  }
+  
+  .app-container {
+    background: transparent !important; /* Ensure no background color override */
+  }
+  
+  .text-wrapper {
+    background-color: #ffffff; /* White background */
+    padding: 0.5rem 1rem; /* Padding around the text */
+    border-radius: 0.5rem; /* Rounded corners */
+    display: inline-block; /* Only as wide as the text */
+    text-align: center;
+    margin-bottom: 1rem; /* Space below the wrapper */
+  }
+  
+  .analytics-heading {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+  }
+
+  /* Apply Kumar One Outline font to Eisenhower Matrix heading */ 
+  .eisenhower-matrix-heading { font-family: 'Kumar One Outline', cursive; 
+  }
+  
+  /* Other styles... */
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  /* Task Strike-Off Animation */
+  .task-title {
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+  }
+  
+  .task-completed {
+    color: #d1d1d1;
+    text-decoration: line-through;
+  }
+  
+  /* Enhanced Glassmorphism Effect with Colored Borders */
+  .glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .border-red-500 {
+    border-color: rgba(255, 0, 0, 0.6);
+  }
+  
+  .border-green-500 {
+    border-color: rgba(0, 255, 0, 0.6);
+  }
+  
+  .border-yellow-900 {
+    border-color: rgba(255, 204, 0, 0.6);
+  }
+  
+  .border-blue-500 {
+    border-color: rgba(0, 0, 255, 0.6);
+  }
+  
+  .border-opacity-60 {
+    --tw-border-opacity: 0.6;
+  }
+  
+  /* Glow Effects */
+  .glow-red {
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.6);
+  }
+  
+  .glow-yellow {
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.6);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 12px rgba(0, 0, 255, 0.6);
+  }
+  
+  /* Analytics Section */
+  .analytics-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(30, 30, 30, 0.9); /* Dark background for dark mode */
+    color: #ffffff; /* White text for readability */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
