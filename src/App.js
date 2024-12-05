@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import Analytics from './Analytics';
+import Analytics from '..components/Analytics';
 
 function App() {
   const [tasks, setTasks] = useState([]);
