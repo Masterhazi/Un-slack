@@ -69,6 +69,9 @@ function App() {
         <div className="text-wrapper">
           <h1 className="text-4xl font-bold text-black-600 eisenhower-matrix-heading">Eisenhower Matrix</h1>
         </div>
+        <div className="text-wrapper">
+          <h2 className="text-2xl font-bold text-black-600">Task Analytics</h2>
+        </div>
       </div>
       <div className="flex justify-center mb-8">
         <Analytics />
