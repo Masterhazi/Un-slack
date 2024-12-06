@@ -22,11 +22,11 @@ function App() {
         setTasks(tasks);
       } else {
         console.error('Expected tasks to be an array, but got:', typeof tasks, tasks);
-        setTasks([]); // Set to an empty array if the response is not an array
+        setTasks([]);
       }
     } catch (error) {
       console.error('Error fetching tasks:', error);
-      setTasks([]); // Set to an empty array in case of error
+      setTasks([]);
     }
     setLoading(false); // Stop loading
   };
@@ -69,9 +69,9 @@ function App() {
         <div className="text-wrapper">
           <h1 className="text-4xl font-bold text-black-600 eisenhower-matrix-heading">Eisenhower Matrix</h1>
         </div>
-        <div className="flex justify-center mb-8">
-          <Analytics />
-        </div>
+      </div>
+      <div className="flex justify-center mb-8">
+        <Analytics />
       </div>
       {loading ? (
         <p>Loading tasks...</p>

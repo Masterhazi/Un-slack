@@ -15,25 +15,23 @@ function Analytics() {
     try {
       const response = await axios.get('/tasks');
       const tasks = response.data;
-      console.log('API response (Analytics):', tasks);
 
       if (Array.isArray(tasks)) {
         const completed = tasks.filter(task => task.completed).length;
         const pending = tasks.length - completed;
         setTaskData({ completed, pending });
       } else {
-        console.error('Expected tasks to be an array, but got:', typeof tasks, tasks);
-        setTaskData({ completed: 0, pending: 0 });
+        console.error('Invalid response format:', tasks);
       }
     } catch (error) {
       console.error('Error fetching task data:', error);
-      setTaskData({ completed: 0, pending: 0 });
     }
     setLoading(false);
   };
 
   return (
-    <div className="analytics-container glass border-4 p-6 rounded-lg shadow-lg mb-8 dark-mode">
+    <div className="analytics-container">
+      <h2 className="text-2xl font-bold mb-4">Task Analytics</h2>
       {loading ? (
         <p>Loading data...</p>
       ) : (
@@ -43,21 +41,18 @@ function Analytics() {
               values: [taskData.completed, taskData.pending],
               labels: ['Completed', 'Pending'],
               type: 'pie',
-              hole: .4,
-              marker: {
-                colors: ['#4CAF50', '#FF9800'],
-              },
+              hole: 0.4, // Doughnut chart
+              marker: { colors: ['#4CAF50', '#FF9800'] },
             },
           ]}
           layout={{
-            title: '',
+            height: 400, // Adjusted graph height
+            width: 500, // Adjusted graph width
             showlegend: true,
-            paper_bgcolor: '#1e1e1e',
-            plot_bgcolor: '#1e1e1e',
-            font: {
-              color: '#ffffff',
-            },
-            margin: { t: 0, b: 0, l: 0, r: 0 },
+            paper_bgcolor: 'rgba(30,30,30,0.9)',
+            plot_bgcolor: 'rgba(30,30,30,0.9)',
+            font: { color: '#ffffff' },
+            margin: { t: 10, b: 10, l: 10, r: 10 },
           }}
           config={{ responsive: true }}
         />
