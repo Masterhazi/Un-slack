@@ -11,11 +11,11 @@ function Analytics() {
   }, []);
 
   const fetchTaskData = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       const response = await axios.get('/tasks');
       const tasks = response.data;
-      console.log('API response (Analytics):', tasks); // Log the response
+      console.log('API response (Analytics):', tasks);
 
       if (Array.isArray(tasks)) {
         const completed = tasks.filter(task => task.completed).length;
@@ -29,14 +29,11 @@ function Analytics() {
       console.error('Error fetching task data:', error);
       setTaskData({ completed: 0, pending: 0 });
     }
-    setLoading(false); // Stop loading
+    setLoading(false);
   };
 
   return (
     <div className="analytics-container glass border-4 p-6 rounded-lg shadow-lg mb-8 dark-mode">
-      <div className="text-wrapper">
-        <h2 className="text-2xl font-bold text-blue-600">Task Analytics</h2>
-      </div>
       {loading ? (
         <p>Loading data...</p>
       ) : (
@@ -46,9 +43,9 @@ function Analytics() {
               values: [taskData.completed, taskData.pending],
               labels: ['Completed', 'Pending'],
               type: 'pie',
-              hole: .4, // To create a doughnut chart
+              hole: .4,
               marker: {
-                colors: ['#4CAF50', '#FF9800'], // Custom colors for the chart
+                colors: ['#4CAF50', '#FF9800'],
               },
             },
           ]}
@@ -58,7 +55,7 @@ function Analytics() {
             paper_bgcolor: '#1e1e1e',
             plot_bgcolor: '#1e1e1e',
             font: {
-              color: '#ffffff'
+              color: '#ffffff',
             },
             margin: { t: 0, b: 0, l: 0, r: 0 },
           }}

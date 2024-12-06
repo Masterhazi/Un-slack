@@ -69,9 +69,9 @@ function App() {
         <div className="text-wrapper">
           <h1 className="text-4xl font-bold text-black-600 eisenhower-matrix-heading">Eisenhower Matrix</h1>
         </div>
-      </div>
-      <div className="flex justify-center mb-8">
-        <Analytics />
+        <div className="flex justify-center mb-8">
+          <Analytics />
+        </div>
       </div>
       {loading ? (
         <p>Loading tasks...</p>
