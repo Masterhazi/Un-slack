@@ -16,7 +16,7 @@ function App() {
     try {
       const response = await axios.get('/tasks');
       const tasks = response.data;
-      console.log('API response:', tasks); // Log the response
+      console.log('API response (App):', tasks); // Log the response
 
       if (Array.isArray(tasks)) {
         setTasks(tasks);
