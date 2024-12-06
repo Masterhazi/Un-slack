@@ -12,11 +12,11 @@ function App() {
   }, []);
 
   const fetchTasks = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       const response = await axios.get('/tasks');
       const tasks = response.data;
-      console.log('API response (App):', tasks); // Log the response
+      console.log('API response (App):', tasks);
 
       if (Array.isArray(tasks)) {
         setTasks(tasks);
@@ -28,11 +28,12 @@ function App() {
       console.error('Error fetching tasks:', error);
       setTasks([]);
     }
-    setLoading(false); // Stop loading
+    setLoading(false);
   };
 
   const addTask = async (title, quadrant) => {
     try {
+      console.log(`Adding task: ${title} to quadrant: ${quadrant}`);
       await axios.post('/tasks', { title, quadrant });
       fetchTasks();
     } catch (error) {
@@ -42,6 +43,7 @@ function App() {
 
   const updateTask = async (id, completed) => {
     try {
+      console.log(`Updating task ID: ${id} to completed: ${completed}`);
       await axios.put(`/tasks/${id}`, { completed });
       fetchTasks();
     } catch (error) {
@@ -51,16 +53,16 @@ function App() {
 
   const quadrantStyles = {
     'DO': 'glass border-red-500 text-red-500 glow-red',
-    'SCHEDULE': 'glass border-green-500 text-green-500 glow-green',
-    'DELEGATE': 'glass border-yellow-500 text-yellow-500 glow-yellow',
-    'ELIMINATE': 'glass border-blue-500 text-blue-500 glow-blue',
+    'SCHEDULE(PLAN ABOUT IT)': 'glass border-green-500 text-green-500 glow-green',
+    'DELEGATE(THINK ABOUT IT)': 'glass border-yellow-500 text-yellow-500 glow-yellow',
+    'ELIMINATE(GET RID OF IT)': 'glass border-blue-500 text-blue-500 glow-blue',
   };
 
   const headingStyles = {
     'DO': 'bg-red-500 text-white p-2 mb-1 rounded-left',
-    'SCHEDULE': 'bg-green-500 text-white p-2 mb-1 rounded-left',
-    'DELEGATE': 'bg-yellow-500 text-white p-2 mb-1 rounded-left',
-    'ELIMINATE': 'bg-blue-500 text-white p-2 mb-1 rounded-left',
+    'SCHEDULE(PLAN ABOUT IT)': 'bg-green-500 text-white p-2 mb-1 rounded-left',
+    'DELEGATE(THINK ABOUT IT)': 'bg-yellow-500 text-white p-2 mb-1 rounded-left',
+    'ELIMINATE(GET RID OF IT)': 'bg-blue-500 text-white p-2 mb-1 rounded-left',
   };
 
   return (
@@ -77,14 +79,18 @@ function App() {
         <p>Loading tasks...</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-4">
-          {['DO', 'SCHEDULE', 'DELEGATE', 'ELIMINATE'].map((quadrant) => (
+          {['DO', 'SCHEDULE(PLAN ABOUT IT)', 'DELEGATE(THINK ABOUT IT)', 'ELIMINATE(GET RID OF IT)'].map((quadrant) => (
             <div key={quadrant} className={`rounded-lg p-6 shadow-lg border-4 ${quadrantStyles[quadrant]}`}>
               <div className="flex justify-left mb-4">
                 <h2 className={`text-2xl font-bold mb-0.5 rounded ${headingStyles[quadrant]}`}>{quadrant}</h2>
               </div>
               <div className={`border-b-4 mb-4 ${quadrantStyles[quadrant]}`}></div>
               <ul>
-                {tasks.filter(task => task.quadrant === quadrant).map(task => (
+                {tasks.filter(task => {
+                  const isCorrectQuadrant = task.quadrant === quadrant;
+                  console.log(`Task ID ${task.id} in quadrant ${task.quadrant}:`, isCorrectQuadrant);
+                  return isCorrectQuadrant;
+                }).map(task => (
                   <li key={task.id} className="flex items-center mb-2 text-gray-900">
                     <input type="checkbox" checked={task.completed} onChange={() => updateTask(task.id, !task.completed)} className="mr-2"/>
                     <span className={`task-title ${task.completed ? 'task-completed' : ''}`}>{task.title}</span>
@@ -93,6 +99,7 @@ function App() {
               </ul>
               <input type="text" placeholder="New Task" onKeyDown={(e) => {
                 if (e.key === 'Enter') {
+                  console.log(`Adding task to quadrant: ${quadrant}`);
                   addTask(e.target.value, quadrant);
                   e.target.value = '';
                 }
