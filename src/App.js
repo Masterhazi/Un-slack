@@ -69,7 +69,7 @@ function App() {
     <div className="app-container min-h-screen p-6">
       <div className="flex flex-col items-center">
         <div className="text-wrapper">
-          <h1 className="text-4xl font-bold text-black-600 eisenhower-matrix-heading">Eisenhower Matrix</h1>
+          <h1 className="text-4xl font-bold text-black-600 eisenhower-matrix-heading">Un-slack</h1>
         </div>
       </div>
       <div className="flex justify-center mb-8">

@@ -16,7 +16,6 @@
   src: url('../public/ginto-font-family-1733445484-0/ABCGintoNord-ThinItalic-Trial-BF651b7b773ab56.otf') format('opentype');
   font-style: italic;
 }
-
 body {
   margin: 0;
   font-family: 'Ginto-Thin', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -97,7 +96,7 @@ code {
   font-weight: bold; /* Bold text */
   color: #ffffff; /* White text */
   font-size: 1.2rem; /* Adjust the font size as needed */
-  text-transform: capitalize; /* Capitalize text */
+  text-transform: capitalize; /* Capitalize first letter of each word */
   font-family: 'Ginto-Medium'; /* Use Ginto-Medium for task titles */
 }
 
