@@ -66,7 +66,7 @@ def add_task():
         app.logger.error(f"Error adding task: {str(e)}")
         return str(e), 500
 
-@app.route('/tasks/<int:task_id>', methods=['PUT'])
+@app.route('/tasks/<int:task_id>', methods=['POST'])
 def update_task(task_id):
     data = request.get_json()
     ensure_tasks_table_exists()
