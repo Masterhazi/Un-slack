@@ -49,7 +49,7 @@ def get_tasks():
         app.logger.error(f"Error retrieving tasks: {str(e)}")
         return str(e), 500
 
-@app.route('/tasks', methods=['PUT'])
+@app.route('/tasks', methods=['POST'])
 def add_task():
     data = request.get_json()
     ensure_tasks_table_exists()
