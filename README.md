@@ -133,7 +133,7 @@ Want to make Un-Slack even better? Here's how:
 
 ## 📬 **Contact Us**  
 
-Got questions, feedback, or feature requests? We’d love to hear from you! Reach us at [support@unslack.com](mailto:support@unslack.com).  
+Got questions, feedback, or feature requests? We’d love to hear from you! Reach us at [support@unslack.com](mailto:hajiafridbaba@gmail.com).  
 
 ---
 
