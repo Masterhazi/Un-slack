@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import mysql.connector
 import os
 from dotenv import load_dotenv
@@ -6,7 +6,7 @@ from datetime import datetime
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../public')  # Set the static folder to 'public'
 
 def get_db_connection():
     return mysql.connector.connect(
@@ -15,7 +15,7 @@ def get_db_connection():
         password=os.getenv('MYSQL_PASSWORD'),
         database=os.getenv('MYSQL_DATABASE'),
         port=os.getenv('MYSQL_PORT'),
-        #ssl_ca=os.getenv('MYSQL_SSL_CA')
+        ssl_ca=os.getenv('MYSQL_SSL_CA')
     )
 
 def ensure_tasks_table_exists():
@@ -85,6 +85,15 @@ def update_task(task_id):
     except Exception as e:
         app.logger.error(f"Error updating task: {str(e)}")
         return str(e), 500
+
+# Serve static files
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_static(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
