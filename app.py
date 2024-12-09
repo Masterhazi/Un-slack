@@ -15,7 +15,7 @@ def get_db_connection():
         password=os.getenv('MYSQL_PASSWORD'),
         database=os.getenv('MYSQL_DATABASE'),
         port=os.getenv('MYSQL_PORT'),
-        #ssl_ca=os.getenv('MYSQL_SSL_CA')
+        ssl_ca=os.getenv('MYSQL_SSL_CA')
     )
 
 def ensure_tasks_table_exists():
